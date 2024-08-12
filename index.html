@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recipe Planner</title>
+</head>
+<body>
+    <h1>Online Recipe Planner</h1>
+    {% if current_user.is_authenticated %}
+        <p>Hello, {{ current_user.username }}! <a href="{{ url_for('logout') }}">Logout</a></p>
+        <a href="{{ url_for('new_recipe') }}">Add New Recipe</a>
+        <a href="{{ url_for('meal_plan') }}">Plan Your Meals</a>
+        <a href="{{ url_for('grocery_list') }}">Generate Grocery List</a>
+    {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+    
+    <h2>Your Recipes</h2>
+    <ul>
+        {% for recipe in recipes %}
+            <li>{{ recipe.title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
