@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Meal Plan</title>
+</head>
+<body>
+    <h1>Plan Your Meals</h1>
+    {% for day, meals in plans.items() %}
+        <h2>{{ day }}</h2>
+        <ul>
+            {% for meal, recipe in meals.items() %}
+                <li>{{ meal }}: {% if recipe %}{{ recipe.title }}{% else %}Not planned{% endif %}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="{{ url_for('index') }}">Back to home</a>
+</body>
+</html>
